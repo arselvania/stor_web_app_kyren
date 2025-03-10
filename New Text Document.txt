@@ -1,0 +1,49 @@
+ تنظیم config.py
+TOKEN = "توکن ربات از BotFather"
+WEBHOOK_URL = "https://your-ngrok-url/webhook"
+WEB_APP_URL = "https://your-ngrok-url/"
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+۱ اجرای app.py
+✅ بررسی:
+توی مرورگر برو http://127.0.0.1:5000
+ببین آیا index.html لود میشه یا نه؟
+اگر Bad Page میاد، مسیر index.html رو چک کن.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+۲️ راه‌اندازی ngrok
+برای اینکه تلگرام بتونه به سرور Flask دسترسی داشته باشه، باید از ngrok استفاده کنیم:
+ngrok http 5000
+
+بعد از اجرای ngrok یه آدرس مشابه این دریافت می‌کنی:
+https://abcd-1234.ngrok-free.app
+این آدرس رو توی config.py به عنوان WEB_APP_URL و WEBHOOK_URL بذار.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+۳️اجرای bot.py
+python bot.py
+
+✅ بررسی:
+دستور /start رو در تلگرام بفرست.
+ببین دکمه وب‌اپ میاد یا نه؟
+بعد از کلیک روی دکمه، index.html باز میشه یا نه؟
+
+
+
+https://api.telegram.org/bot7933309832:AAEeybV-rde40hTj0Bn7c6vwvh7ETUd3v_k/getMe  # تست توکن بات
+
+
+ngrok config add-authtoken 2td49XNZBsOyGUaC8SS7atKvNzt_7PYaaJUc2ZESG5723e7Vx
+
+https://api.telegram.org/bot7933309832:AAEeybV-rde40hTj0Bn7c6vwvh7ETUd3v_k/getWebhookInfo   # گرفتن وبهوک
+
+
+https://api.telegram.org/bot7933309832:AAEeybV-rde40hTj0Bn7c6vwvh7ETUd3v_k/deleteWebhook   # حذف وبهوک 
+
+
+https://api.telegram.org/bot7933309832:AAEeybV-rde40hTj0Bn7c6vwvh7ETUd3v_k/setWebhook?url=https://your-ngrok-url/webhook  #ست وبهوک 
+
+
+https://api.telegram.org/bot7933309832:AAEeybV-rde40hTj0Bn7c6vwvh7ETUd3v_k/setWebhook?url=https://72ce-146-19-247-183.ngrok-free.app/webhook
+https://43d8-146-19-247-183.ngrok-free.app
