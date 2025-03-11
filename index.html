@@ -1,38 +1,980 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه کایرن</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>کایرن | پلن‌های اشتراک وب اپ‌های فروشگاهی</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-color: #f5f5f5;
+        /* فونت‌های فارسی */
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.eot');
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.eot?#iefix') format('embedded-opentype'),
+                 url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.woff2') format('woff2'),
+                 url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.woff') format('woff'),
+                 url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            background: #0088cc;
-            color: white;
+
+        /* متغیرهای رنگ */
+        :root {
+            --primary-color: #64B5F6; /* آبی روشن */
+            --secondary-color: #90CAF9; /* آبی روشن‌تر */
+            --accent-color: #2196F3; /* آبی تیره‌تر برای تأکید */
+            --neutral-color: #F5F5F5; /* خنثی روشن */
+            --text-color: #424242; /* متن تیره */
+            --light-text: #757575; /* متن روشن‌تر */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        body {
+            background-color: var(--neutral-color);
+            color: var(--text-color);
+        }
+
+        /* هدر */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-actions a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .search-box {
+            position: relative;
+            margin-left: 15px;
+        }
+
+        .search-box input {
+            padding: 8px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-box button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
             border: none;
-            border-radius: 5px;
+            color: var(--light-text);
             cursor: pointer;
+        }
+
+        /* بنر اصلی */
+        .hero {
+            background: linear-gradient(to left, var(--secondary-color), var(--primary-color));
+            padding: 70px 0;
+            text-align: center;
+            color: var(--white);
+            border-radius: 0 0 30px 30px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--white);
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* بخش معرفی */
+        .intro {
+            padding: 70px 0;
+        }
+
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .intro-image {
+            background-color: var(--primary-color);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.2);
+        }
+
+        /* پلن‌های اشتراک */
+        .pricing {
+            padding: 50px 0;
+            background-color: var(--white);
+            border-radius: 30px;
+            margin: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 28px;
+            color: var(--text-color);
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            border: 1px solid #e0e0e0;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pricing-popular {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .pricing-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 36px;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .pricing-period {
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        .pricing-features {
+            padding: 30px 20px;
+        }
+
+        .pricing-features ul {
+            list-style: none;
+        }
+
+        .pricing-features ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features ul li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features ul li i {
+            margin-left: 10px;
+            color: var(--accent-color);
+        }
+
+        .pricing-action {
+            padding: 0 20px 30px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: transparent;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-color);
+            width: 100%;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+        }
+
+        /* ویژگی‌های سرویس */
+        .features {
+            padding: 70px 0;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 30px;
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            line-height: 1.7;
+        }
+
+        /* نظرات مشتریان */
+        .testimonials {
+            padding: 70px 0;
+            background-color: var(--white);
+            border-radius: 30px;
+            margin: 0 20px;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--neutral-color);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            margin-left: 15px;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        /* سوالات متداول */
+        .faq {
+            padding: 70px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 300px;
+        }
+
+        /* فراخوان به عمل */
+        .cta {
+            padding: 70px 0;
+            background: linear-gradient(to left, var(--secondary-color), var(--primary-color));
+            text-align: center;
+            color: var(--white);
+            border-radius: 30px;
+            margin: 0 20px 50px;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        /* فوتر */
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            text-decoration: none;
+            color: #bdbdbd;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact span {
+            margin-right: 10px;
+        }
+
+        .social-media {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            margin-left: 10px;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-media a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 20px 20px 0;
+            border-top: 1px solid #424242;
+            text-align: center;
+            color: #bdbdbd;
+            font-size: 14px;
+        }
+
+        /* نمایش موبایل */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin-bottom: 5px;
+            border-radius: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: var(--white);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-200%);
+                transition: transform 0.3s;
+                border-radius: 0 0 20px 20px;
+            }
+
+            nav.active {
+                transform: translateY(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .header-actions {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .intro-container {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-image {
+                order: -1;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>فروشگاه کایرن</h1>
-    <p>برای ادامه خرید، روی دکمه زیر کلیک کنید.</p>
-    <button onclick="sendDataToBot()">ارسال اطلاعات به ربات</button>
+    <!-- هدر -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>K</span>YREN
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">صفحه اصلی</a></li>
+                    <li><a href="product.html">پلن‌های اشتراک</a></li>
+                    <li><a href="#">ویژگی‌ها</a></li>
+                    <li><a href="#">مشتریان</a></li>
+                    <li><a href="#">سوالات متداول</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#"><i class="fas fa-user"></i> ورود</a>
+                <a href="#"><i class="fas fa-user-plus"></i> ثبت نام</a>
+                <div class="search-box">
+                    <input type="text" placeholder="جستجو...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <script>
-        function sendDataToBot() {
-            let tg = window.Telegram.WebApp;
-            tg.sendData(JSON.stringify({ action: "open_shop", user_id: tg.initDataUnsafe?.user?.id }));
-        }
-    </script>
+    <!-- بنر اصلی -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>سیستم مدیریت فروشگاه آنلاین کایرن</h1>
+            <p>ساخت و مدیریت آسان فروشگاه آنلاین با امکانات حرفه‌ای و قیمت مناسب</p>
+            <a href="#pricing" class="btn">مشاهده پلن‌های اشتراک</a>
+        </div>
+    </section>
+
+    <!-- بخش معرفی -->
+    <section class="intro">
+        <div class="intro-container">
+            <div class="intro-text">
+                <h2>چرا کایرن را انتخاب کنید؟</h2>
+                <p>کایرن یک سیستم مدیریت فروشگاه آنلاین است که به شما کمک می‌کند تا در کمترین زمان ممکن، فروشگاه اینترنتی خود را راه‌اندازی کنید.</p>
+                <p>با استفاده از کایرن، شما می‌توانید محصولات خود را به راحتی مدیریت کنید، سفارشات را پیگیری نمایید و گزارش‌های دقیق از عملکرد فروشگاه خود داشته باشید.</p>
+                <p>پنل مدیریت کاربرپسند، امکانات متنوع و پشتیبانی ۲۴ ساعته، کایرن را به گزینه‌ای مناسب برای کسب‌وکارهای کوچک و بزرگ تبدیل کرده است.</p>
+            </div>
+            <div class="intro-image">
+                تصویر داشبورد کایرن
+            </div>
+        </div>
+    </section>
+
+    <!-- پلن‌های اشتراک -->
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">پلن‌های اشتراک</h2>
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">پلن پایه</h3>
+                    <div class="pricing-price">۲۹۰,۰۰۰</div>
+                    <div class="pricing-period">تومان / ماهانه</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i>مدیریت تا ۱۰۰ محصول</li>
+                        <li><i class="fas fa-check"></i>درگاه پرداخت آنلاین</li>
+                        <li><i class="fas fa-check"></i>قالب رسپانسیو</li>
+                        <li><i class="fas fa-check"></i>سیستم مدیریت انبار</li>
+                        <li><i class="fas fa-check"></i>گزارش‌های پایه</li>
+                        <li><i class="fas fa-times"></i>پشتیبانی VIP</li>
+                        <li><i class="fas fa-times"></i>اتصال به سیستم حسابداری</li>
+                        <li><i class="fas fa-times"></i>اپلیکیشن موبایل</li>
+                    </ul>
+                </div>
+                <div class="pricing-action">
+                    <a href="product.html" class="btn-outline">مشاهده جزئیات</a>
+                </div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-popular">پرطرفدار</div>
+                <div class="pricing-header">
+                    <h3 class="pricing-title">پلن حرفه‌ای</h3>
+                    <div class="pricing-price">۴۹۰,۰۰۰</div>
+                    <div class="pricing-period">تومان / ماهانه</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i>مدیریت تا ۱۰۰۰ محصول</li>
+                        <li><i class="fas fa-check"></i>چند درگاه پرداخت آنلاین</li>
+                        <li><i class="fas fa-check"></i>قالب‌های متنوع</li>
+                        <li><i class="fas fa-check"></i>سیستم مدیریت انبار پیشرفته</li>
+                        <li><i class="fas fa-check"></i>گزارش‌های پیشرفته</li>
+                        <li><i class="fas fa-check"></i>پشتیبانی VIP</li>
+                        <li><i class="fas fa-check"></i>اتصال به سیستم حسابداری</li>
+                        <li><i class="fas fa-times"></i>اپلیکیشن موبایل</li>
+                    </ul>
+                </div>
+                <div class="pricing-action">
+                    <a href="product.html" class="btn-primary">مشاهده جزئیات</a>
+                </div>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">پلن سازمانی</h3>
+                    <div class="pricing-price">۸۹۰,۰۰۰</div>
+                    <div class="pricing-period">تومان / ماهانه</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i>مدیریت نامحدود محصول</li>
+                        <li><i class="fas fa-check"></i>تمام درگاه‌های پرداخت</li>
+                        <li><i class="fas fa-check"></i>قالب اختصاصی</li>
+                        <li><i class="fas fa-check"></i>سیستم مدیریت انبار پیشرفته</li>
+                        <li><i class="fas fa-check"></i>گزارش‌های سفارشی</li>
+                        <li><i class="fas fa-check"></i>پشتیبانی VIP ۲۴/۷</li>
+                        <li><i class="fas fa-check"></i>اتصال به سیستم حسابداری</li>
+                        <li><i class="fas fa-check"></i>اپلیکیشن موبایل اختصاصی</li>
+                    </ul>
+                </div>
+                <div class="pricing-action">
+                    <a href="product.html" class="btn-outline">مشاهده جزئیات</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ویژگی‌های سرویس -->
+    <section class="features">
+        <h2 class="section-title">ویژگی‌های کایرن</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>راه‌اندازی سریع</h3>
+                <p>در کمتر از ۳۰ دقیقه فروشگاه آنلاین خود را راه‌اندازی کنید و کسب‌وکار خود را آنلاین کنید.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>نمایش واکنشگرا</h3>
+                <p>فروشگاه شما در تمام دستگاه‌ها اعم از کامپیوتر، موبایل و تبلت به صورت بهینه نمایش داده می‌شود.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>امنیت بالا</h3>
+                <p>با جدیدترین استانداردهای امنیتی، اطلاعات شما و مشتریانتان محافظت می‌شود.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>مدیریت آسان</h3>
+                <p>پنل کاربری ساده و پیشرفته برای مدیریت محصولات، سفارشات و مشتریان شما.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>پشتیبانی حرفه‌ای</h3>
+                <p>تیم پشتیبانی ما همیشه در کنار شماست تا مشکلاتتان را به سرعت حل کند.</p>
+            </div>
+        </div>
+    </section>
+
+
+    
+        <!-- فوتر -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <span>K</span>YREN
+                    </div>
+                    <p>کایرن، پیشرو در ارائه راهکارهای فروشگاه آنلاین برای کسب‌وکارهای ایرانی. با کایرن به راحتی می‌توانید فروشگاه آنلاین خود را راه‌اندازی کنید و فروش خود را افزایش دهید.</p>
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>لینک‌های سریع</h3>
+                    <ul>
+                        <li><a href="#">صفحه اصلی</a></li>
+                        <li><a href="#">پلن‌های اشتراک</a></li>
+                        <li><a href="#">ویژگی‌ها</a></li>
+                        <li><a href="#">وبلاگ</a></li>
+                        <li><a href="#">درباره ما</a></li>
+                        <li><a href="#">تماس با ما</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>خدمات</h3>
+                    <ul>
+                        <li><a href="#">راه‌اندازی فروشگاه آنلاین</a></li>
+                        <li><a href="#">طراحی قالب اختصاصی</a></li>
+                        <li><a href="#">سئو و بهینه‌سازی</a></li>
+                        <li><a href="#">دیجیتال مارکتینگ</a></li>
+                        <li><a href="#">مشاوره کسب‌وکار آنلاین</a></li>
+                        <li><a href="#">آموزش فروش آنلاین</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تماس با ما</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <span>تهران، خیابان ولیعصر، برج کایرن، طبقه ۸، واحد ۳</span></p>
+                    <p><i class="fas fa-phone"></i> <span>۰۲۱-۸۸۷۷۶۶۵۵</span></p>
+                    <p><i class="fas fa-envelope"></i> <span>kyren.ir</span></p>
+                    <p><i class="fas fa-clock"></i> <span>شنبه تا چهارشنبه: ۸ صبح تا ۶ عصر</span></p>
+                    <p><i class="fas fa-clock"></i> <span>پنجشنبه: ۸ صبح تا ۱ بعدازظهر</span></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>تمامی حقوق برای فروشگاه کایرن محفوظ است. &copy; ۱۴۰۴</p>
+            </div>
+        </footer>
+    
+        <!-- اسکریپت‌ها -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+        <script>
+            // منوی موبایل
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                document.querySelector('nav').classList.toggle('active');
+            });
+    
+            // تب‌ها
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const planTitleElement = document.getElementById('plan-hero-title');
+            const currentPlanElement = document.getElementById('current-plan-title');
+    
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // فعال کردن دکمه تب
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+    
+                    // نمایش محتوای تب
+                    const planType = btn.getAttribute('data-plan');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(`${planType}-tab`).classList.add('active');
+    
+                    // به‌روزرسانی عنوان صفحه
+                    if (planType === 'compare') {
+                        planTitleElement.textContent = 'مقایسه پلن‌های اشتراکی کایرن';
+                        currentPlanElement.textContent = 'مقایسه پلن‌ها';
+                    } else if (planType === 'basic') {
+                        planTitleElement.textContent = 'جزئیات پلن پایه کایرن';
+                        currentPlanElement.textContent = 'پلن پایه';
+                    } else if (planType === 'pro') {
+                        planTitleElement.textContent = 'جزئیات پلن حرفه‌ای کایرن';
+                        currentPlanElement.textContent = 'پلن حرفه‌ای';
+                    } else if (planType === 'enterprise') {
+                        planTitleElement.textContent = 'جزئیات پلن سازمانی کایرن';
+                        currentPlanElement.textContent = 'پلن سازمانی';
+                    }
+                });
+            });
+    
+            // سوالات متداول
+            const faqQuestions = document.querySelectorAll('.faq-question');
+    
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+        </script>
 </body>
 </html>

@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کایرن | جزئیات پلن‌های اشتراک</title>
+    <style>
+        /* فونت‌های فارسی */
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.eot');
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.eot?#iefix') format('embedded-opentype'),
+                 url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.woff2') format('woff2'),
+                 url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.woff') format('woff'),
+                 url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* متغیرهای رنگ */
+        :root {
+            --primary-color: #64B5F6; /* آبی روشن */
+            --secondary-color: #90CAF9; /* آبی روشن‌تر */
+            --accent-color: #2196F3; /* آبی تیره‌تر برای تأکید */
+            --neutral-color: #F5F5F5; /* خنثی روشن */
+            --text-color: #424242; /* متن تیره */
+            --light-text: #757575; /* متن روشن‌تر */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        body {
+            background-color: var(--neutral-color);
+            color: var(--text-color);
+        }
+
+        /* هدر */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-actions a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .search-box {
+            position: relative;
+            margin-left: 15px;
+        }
+
+        .search-box input {
+            padding: 8px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-box button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--light-text);
+            cursor: pointer;
+        }
+
+        /* بنر صفحه محصول */
+        .product-hero {
+            background: linear-gradient(to left, var(--secondary-color), var(--primary-color));
+            padding: 50px 0;
+            text-align: center;
+            color: var(--white);
+            border-radius: 0 0 30px 30px;
+        }
+
+        .product-hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .product-hero h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .product-hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 5px;
+            opacity: 0.8;
+        }
+
+        .breadcrumb span {
+            margin: 0 5px;
+            opacity: 0.6;
+        }
+
+        /* تب‌ها */
+        .product-tabs {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .tabs-header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--light-text);
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-color);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* جزئیات پلن */
+        .plan-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+
+        .plan-info h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .plan-info p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .plan-price {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .plan-price span {
+            font-size: 36px;
+            color: var(--accent-color);
+        }
+
+        .plan-period {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .plan-actions {
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+        }
+
+        .plan-image {
+            background-color: var(--primary-color);
+            height: 300px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.2);
+        }
+
+        /* جدول مقایسه ویژگی‌ها */
+        .features-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .features-table th,
+        .features-table td {
+            padding: 15px;
+            text-align: right;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .features-table th {
+            background-color: var(--accent-color);
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        .features-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .features-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .feature-available {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .feature-unavailable {
+            color: #F44336;
+        }
+
+        /* سوالات متداول */
+        .plan-faqs {
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 300px;
+        }
+
+        /* نظرات مشتریان */
+        .plan-testimonials {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background-color: var(--neutral-color);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-content {
+            margin-bottom: 15px;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .author-info h4 {
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        .author-info p {
+            color: var(--light-text);
+            font-size: 12px;
+        }
+
+        /* فراخوان به عمل */
+        .plan-cta {
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(to left, var(--secondary-color), var(--primary-color));
+            text-align: center;
+            color: var(--white);
+            border-radius: 20px;
+        }
+
+        .plan-cta h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .plan-cta p {
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--white);
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* فوتر */
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+            border-radius: 30px 30px 0 0;
+            margin-top: 70px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            text-decoration: none;
+            color: #bdbdbd;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact span {
+            margin-right: 10px;
+        }
+
+        .social-media {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            margin-left: 10px;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-media a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 20px 20px 0;
+            border-top: 1px solid #424242;
+            text-align: center;
+            color: #bdbdbd;
+            font-size: 14px;
+        }
+
+        /* نمایش موبایل */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin-bottom: 5px;
+            border-radius: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: var(--white);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-200%);
+                transition: transform 0.3s;
+                border-radius: 0 0 20px 20px;
+            }
+
+            nav.active {
+                transform: translateY(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .header-actions {
+                display: none;
+            }
+
+            .plan-details {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-image {
+                order: -1;
+                height: 200px;
+            }
+
+            .tabs-header {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+            }
+
+            .tab-btn {
+                padding: 10px 15px;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>K</span>YREN
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="index.html#pricing">پلن‌های اشتراک</a></li>
+                    <li><a href="index.html#features">ویژگی‌ها</a></li>
+                    <li><a href="#">مشتریان</a></li>
+                    <li><a href="#">سوالات متداول</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#"><i class="fas fa-user"></i> ورود</a>
+                <a href="#"><i class="fas fa-user-plus"></i> ثبت نام</a>
+                <div class="search-box">
+                    <input type="text" placeholder="جستجو...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- بنر صفحه محصول -->
+    <section class="product-hero">
+        <div class="product-hero-container">
+            <div class="breadcrumb">
+                <a href="index.html">صفحه اصلی</a>
+                <span>/</span>
+                <a href="index.html#pricing">پلن‌های اشتراک</a>
+                <span>/</span>
+                <a href="#" id="current-plan-title">جزئیات پلن</a>
+            </div>
+            <h1 id="plan-hero-title">جزئیات پلن اشتراکی کایرن</h1>
+            <p>اطلاعات کامل پلن‌های اشتراکی کایرن و مقایسه ویژگی‌ها برای انتخاب بهترین پلن متناسب با نیازهای شما</p>
+        </div>
+    </section>
+
+    <!-- تب‌های محصول -->
+    <section class="product-tabs">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-plan="basic">پلن پایه</button>
+            <button class="tab-btn" data-plan="pro">پلن حرفه‌ای</button>
+            <button class="tab-btn" data-plan="enterprise">پلن سازمانی</button>
+            <button class="tab-btn" data-plan="compare">مقایسه پلن‌ها</button>
+        </div>
+
+        <!-- تب پلن پایه -->
+        <div class="tab-content active" id="basic-tab">
+            <div class="plan-details">
+                <div class="plan-info">
+                    <h2>پلن پایه</h2>
+                    <p>پلن پایه کایرن مناسب برای کسب‌وکارهای کوچک و تازه‌کار است که می‌خواهند با هزینه کمتر، فروشگاه آنلاین خود را راه‌اندازی کنند.</p>
+                    <p>با این پلن، شما می‌توانید تا ۱۰۰ محصول را در فروشگاه خود بارگذاری کرده و به فروش برسانید. همچنین از امکانات پایه مدیریت انبار و گزارش‌گیری بهره‌مند خواهید شد.</p>
+                    
+                    <div class="plan-price">قیمت: <span>۲۹۰,۰۰۰</span> تومان</div>
+                    <div class="plan-period">دوره اشتراک: ماهانه</div>
+                    
+                    <ul>
+                        <li><i class="fas fa-check"></i> مدیریت تا ۱۰۰ محصول</li>
+                        <li><i class="fas fa-check"></i> درگاه پرداخت آنلاین (۱ درگاه)</li>
+                        <li><i class="fas fa-check"></i> قالب رسپانسیو (۳ قالب پیش‌فرض)</li>
+                        <li><i class="fas fa-check"></i> سیستم مدیریت انبار پایه</li>
+                        <li><i class="fas fa-check"></i> گزارش‌های پایه فروش و بازدید</li>
+                        <li><i class="fas fa-check"></i> پشتیبانی استاندارد (ساعات اداری)</li>
+                        <li><i class="fas fa-check"></i> آپدیت رایگان</li>
+                        <li><i class="fas fa-check"></i> امکان ارتقا به پلن‌های بالاتر</li>
+                    </ul>
+
+                    <div class="plan-actions">
+                        <button class="btn-primary">خرید اشتراک پلن پایه</button>
+                    </div>
+                </div>
+                <div class="plan-image">
+                    <i class="fas fa-store fa-3x"></i>
+                    <div>تصویر پلن پایه</div>
+                </div>
+            </div>
+            
+            <div class="plan-faqs">
+                <h3>سوالات متداول در مورد پلن پایه</h3>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        آیا می‌توانم بعداً پلن خود را ارتقا دهم؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        بله، شما در هر زمان می‌توانید پلن خود را به پلن حرفه‌ای یا سازمانی ارتقا دهید. مابه‌التفاوت قیمت از شما دریافت خواهد شد و تمام اطلاعات و محصولات شما حفظ می‌شود.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        آیا محدودیت تعداد سفارش وجود دارد؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        خیر، در هیچ یک از پلن‌ها محدودیتی برای تعداد سفارش وجود ندارد. شما می‌توانید نامحدود سفارش دریافت کنید.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        آیا دامنه اختصاصی شامل این پلن می‌شود؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        در پلن پایه، یک زیردامنه رایگان به شما اختصاص داده می‌شود (مانند yourstore.kyren.ir). برای استفاده از دامنه اختصاصی، باید دامنه را جداگانه خریداری کنید و با هزینه اضافی می‌توانید آن را به فروشگاه خود متصل کنید.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "من کار فروشگاهم رو با پلن پایه کایرن شروع کردم. واقعاً برای یک کسب و کار تازه کار، همه امکانات مورد نیاز رو داره و خیلی راحت میشه باهاش کار کرد."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">س</div>
+                        <div class="author-info">
+                            <h4>سعید محمدی</h4>
+                            <p>فروشگاه لوازم جانبی موبایل</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "برای شروع کسب و کار آنلاین من، پلن پایه کایرن کاملاً کافی بود. پشتیبانی خوبی هم دارن و سوالاتم سریع پاسخ داده میشه."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">م</div>
+                        <div class="author-info">
+                            <h4>مریم احمدی</h4>
+                            <p>فروشگاه محصولات دست‌ساز</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-cta">
+                <h3>همین حالا کسب و کار آنلاین خود را شروع کنید</h3>
+                <p>با کمترین هزینه و در سریع‌ترین زمان ممکن، فروشگاه آنلاین خود را راه‌اندازی کنید و فروش خود را افزایش دهید.</p>
+                <a href="#" class="btn-white">شروع ۱۴ روز رایگان</a>
+            </div>
+        </div>
+
+        <!-- تب پلن حرفه‌ای -->
+        <div class="tab-content" id="pro-tab">
+            <div class="plan-details">
+                <div class="plan-info">
+                    <h2>پلن حرفه‌ای</h2>
+                    <p>پلن حرفه‌ای کایرن مناسب برای کسب‌وکارهای متوسط و در حال رشد است که نیاز به امکانات بیشتر و محصولات متنوع‌تر دارند.</p>
+                    <p>با این پلن، شما می‌توانید تا ۱۰۰۰ محصول را مدیریت کنید، از چندین درگاه پرداخت بهره‌مند شوید و از امکانات پیشرفته
+                        <p>با این پلن، شما می‌توانید تا ۱۰۰۰ محصول را مدیریت کنید، از چندین درگاه پرداخت بهره‌مند شوید و از امکانات پیشرفته مدیریت موجودی و گزارش‌های تحلیلی استفاده نمایید.</p>
+                    
+                        <div class="plan-price">قیمت: <span>۵۹۰,۰۰۰</span> تومان</div>
+                        <div class="plan-period">دوره اشتراک: ماهانه</div>
+                        
+                        <ul>
+                            <li><i class="fas fa-check"></i> مدیریت تا ۱۰۰۰ محصول</li>
+                            <li><i class="fas fa-check"></i> درگاه پرداخت آنلاین (۳ درگاه)</li>
+                            <li><i class="fas fa-check"></i> قالب رسپانسیو (۱۰ قالب پیش‌فرض)</li>
+                            <li><i class="fas fa-check"></i> سیستم مدیریت انبار پیشرفته</li>
+                            <li><i class="fas fa-check"></i> گزارش‌های تحلیلی فروش و بازدید</li>
+                            <li><i class="fas fa-check"></i> پشتیبانی ویژه (۷/۲۴)</li>
+                            <li><i class="fas fa-check"></i> دامنه اختصاصی رایگان</li>
+                            <li><i class="fas fa-check"></i> سیستم تخفیف و کوپن پیشرفته</li>
+                            <li><i class="fas fa-check"></i> مدیریت چند فروشنده</li>
+                        </ul>
+    
+                        <div class="plan-actions">
+                            <button class="btn-primary">خرید اشتراک پلن حرفه‌ای</button>
+                        </div>
+                    </div>
+                    <div class="plan-image">
+                        <i class="fas fa-store-alt fa-3x"></i>
+                        <div>تصویر پلن حرفه‌ای</div>
+                    </div>
+                </div>
+                
+                <div class="plan-faqs">
+                    <h3>سوالات متداول در مورد پلن حرفه‌ای</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            آیا می‌توانم قالب سفارشی برای فروشگاهم داشته باشم؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            بله، در پلن حرفه‌ای علاوه بر ۱۰ قالب پیش‌فرض، امکان سفارشی‌سازی قالب‌ها نیز وجود دارد. همچنین با هزینه اضافی می‌توانید از خدمات طراحی اختصاصی قالب استفاده کنید.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            تفاوت پشتیبانی ویژه با پشتیبانی استاندارد چیست؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            در پشتیبانی ویژه، شما به صورت ۲۴ ساعته و ۷ روز هفته به کارشناسان پشتیبانی دسترسی دارید. همچنین زمان پاسخگویی کمتر از ۲ ساعت است و یک کارشناس اختصاصی به پرونده شما رسیدگی می‌کند.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            سیستم مدیریت چند فروشنده چگونه کار می‌کند؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            با این قابلیت، شما می‌توانید تا ۵ فروشنده مختلف را در فروشگاه خود تعریف کنید. هر فروشنده پنل مدیریت مخصوص به خود را دارد و می‌تواند محصولات خود را اضافه و مدیریت کند. کمیسیون و تسویه حساب فروشندگان نیز به صورت خودکار انجام می‌شود.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-testimonials">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "پلن حرفه‌ای کایرن تمام نیازهای یک فروشگاه متوسط رو پوشش میده. سیستم گزارش‌گیری و تحلیل داده‌ها خیلی کمک کرده تا فروشمون بهتر بشه."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ع</div>
+                            <div class="author-info">
+                                <h4>علی کریمی</h4>
+                                <p>فروشگاه محصولات آرایشی</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "قابلیت مدیریت چند فروشنده در پلن حرفه‌ای به ما کمک کرد تا سایت تجمیعی داشته باشیم و درآمدمون چند برابر شد. پشتیبانی هم عالیه."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ف</div>
+                            <div class="author-info">
+                                <h4>فاطمه رضایی</h4>
+                                <p>بازارچه صنایع دستی آنلاین</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-cta">
+                    <h3>کسب و کار آنلاین خود را به سطح بعدی ببرید</h3>
+                    <p>با امکانات حرفه‌ای و پیشرفته، فروشگاه آنلاین خود را گسترش دهید و مشتریان بیشتری جذب کنید.</p>
+                    <a href="#" class="btn-white">ارتقا به پلن حرفه‌ای</a>
+                </div>
+            </div>
+    
+            <!-- تب پلن سازمانی -->
+            <div class="tab-content" id="enterprise-tab">
+                <div class="plan-details">
+                    <div class="plan-info">
+                        <h2>پلن سازمانی</h2>
+                        <p>پلن سازمانی کایرن مناسب برای کسب‌وکارهای بزرگ و شرکت‌هایی است که نیاز به امکانات ویژه و سفارشی‌سازی‌های پیشرفته دارند.</p>
+                        <p>با این پلن، شما محدودیتی در تعداد محصولات نخواهید داشت و از تمامی امکانات پیشرفته سیستم مدیریت فروشگاه کایرن بهره‌مند خواهید شد.</p>
+                        
+                        <div class="plan-price">قیمت: <span>۱,۲۹۰,۰۰۰</span> تومان</div>
+                        <div class="plan-period">دوره اشتراک: ماهانه</div>
+                        
+                        <ul>
+                            <li><i class="fas fa-check"></i> تعداد محصول نامحدود</li>
+                            <li><i class="fas fa-check"></i> درگاه پرداخت آنلاین (نامحدود)</li>
+                            <li><i class="fas fa-check"></i> قالب‌های اختصاصی و سفارشی‌سازی کامل</li>
+                            <li><i class="fas fa-check"></i> سیستم مدیریت انبار پیشرفته چند انباره</li>
+                            <li><i class="fas fa-check"></i> داشبورد مدیریتی هوشمند</li>
+                            <li><i class="fas fa-check"></i> سیستم هوش تجاری و تحلیل داده‌ها</li>
+                            <li><i class="fas fa-check"></i> پشتیبانی VIP با مدیر اختصاصی</li>
+                            <li><i class="fas fa-check"></i> سیستم وفاداری مشتری پیشرفته</li>
+                            <li><i class="fas fa-check"></i> اتصال به سیستم‌های حسابداری و CRM</li>
+                            <li><i class="fas fa-check"></i> امکان راه‌اندازی اپلیکیشن موبایل اختصاصی</li>
+                            <li><i class="fas fa-check"></i> مدیریت فروشنده نامحدود</li>
+                        </ul>
+    
+                        <div class="plan-actions">
+                            <button class="btn-primary">درخواست مشاوره و دمو</button>
+                        </div>
+                    </div>
+                    <div class="plan-image">
+                        <i class="fas fa-building fa-3x"></i>
+                        <div>تصویر پلن سازمانی</div>
+                    </div>
+                </div>
+                
+                <div class="plan-faqs">
+                    <h3>سوالات متداول در مورد پلن سازمانی</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            آیا امکان استقرار سیستم در سرور اختصاصی وجود دارد؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            بله، در پلن سازمانی امکان استقرار سیستم در سرور اختصاصی شما وجود دارد. همچنین می‌توانید از خدمات سرور ابری اختصاصی کایرن نیز بهره‌مند شوید.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            آیا امکان سفارشی‌سازی ویژگی‌ها وجود دارد؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            بله، در پلن سازمانی تیم توسعه کایرن آماده سفارشی‌سازی ویژگی‌ها و ماژول‌های اختصاصی مطابق با نیازهای کسب‌وکار شما است. برای این منظور یک جلسه نیازسنجی با کارشناسان ما برگزار خواهد شد.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            پشتیبانی VIP شامل چه خدماتی می‌شود؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            در پشتیبانی VIP، یک مدیر اختصاصی به پرونده شما رسیدگی می‌کند. پاسخگویی ۲۴/۷ و فوری (کمتر از ۱ ساعت)، جلسات ماهانه آنلاین، آموزش کامل تیم شما و امکان حضور کارشناس در محل شما (برای تهران و کلان‌شهرها) از جمله خدمات پشتیبانی VIP است.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-testimonials">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "ما به عنوان یک فروشگاه زنجیره‌ای، نیاز به سیستمی داشتیم که بتواند چندین شعبه و انبار را مدیریت کند. پلن سازمانی کایرن تمام نیازهای ما را برآورده کرد و باعث افزایش ۱۰۰ درصدی فروش آنلاین ما شد."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">پ</div>
+                            <div class="author-info">
+                                <h4>پیمان صادقی</h4>
+                                <p>مدیر IT فروشگاه زنجیره‌ای ستاره</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "سیستم هوش تجاری و داشبورد مدیریتی کایرن به ما کمک کرد تا تصمیمات بهتری برای کسب‌وکارمان بگیریم. سفارشی‌سازی‌ها و پشتیبانی VIP عالی است."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ن</div>
+                            <div class="author-info">
+                                <h4>نسرین محمودی</h4>
+                                <p>مدیرعامل فروشگاه آنلاین لوازم خانگی مدرن</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-cta">
+                    <h3>راه‌حل‌های سازمانی برای کسب‌وکارهای پیشرو</h3>
+                    <p>با استفاده از امکانات پیشرفته و سفارشی‌سازی‌های حرفه‌ای، تجربه خرید آنلاین متفاوتی را برای مشتریان خود رقم بزنید.</p>
+                    <a href="#" class="btn-white">مشاوره رایگان با کارشناسان ما</a>
+                </div>
+            </div>
+    
+            <!-- تب مقایسه پلن‌ها -->
+            <div class="tab-content" id="compare-tab">
+                <h2>مقایسه پلن‌های اشتراکی کایرن</h2>
+                <p>برای انتخاب بهترین پلن متناسب با نیازهای خود، ویژگی‌های پلن‌های مختلف را مقایسه کنید:</p>
+                
+                <table class="features-table">
+                    <thead>
+                        <tr>
+                            <th>ویژگی</th>
+                            <th>پلن پایه</th>
+                            <th>پلن حرفه‌ای</th>
+                            <th>پلن سازمانی</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>قیمت ماهانه</td>
+                            <td>۲۹۰,۰۰۰ تومان</td>
+                            <td>۵۹۰,۰۰۰ تومان</td>
+                            <td>۱,۲۹۰,۰۰۰ تومان</td>
+                        </tr>
+                        <tr>
+                            <td>تعداد محصولات مجاز</td>
+                            <td>۱۰۰</td>
+                            <td>۱,۰۰۰</td>
+                            <td>نامحدود</td>
+                        </tr>
+                        <tr>
+                            <td>تعداد درگاه‌های پرداخت</td>
+                            <td>۱</td>
+                            <td>۳</td>
+                            <td>نامحدود</td>
+                        </tr>
+                        <tr>
+                            <td>تعداد قالب‌ها</td>
+                            <td>۳</td>
+                            <td>۱۰</td>
+                            <td>نامحدود + اختصاصی</td>
+                        </tr>
+                        <tr>
+                            <td>دامنه اختصاصی</td>
+                            <td class="feature-unavailable">خیر</td>
+                            <td class="feature-available">بله</td>
+                            <td class="feature-available">بله</td>
+                        </tr>
+                        <tr>
+                            <td>مدیریت انبار</td>
+                            <td>پایه</td>
+                            <td>پیشرفته</td>
+                            <td>پیشرفته چند انباره</td>
+                        </tr>
+                        <tr>
+                            <td>گزارش‌های تحلیلی</td>
+                            <td>پایه</td>
+                            <td>پیشرفته</td>
+                            <td>هوش تجاری کامل</td>
+                        </tr>
+                        <tr>
+                            <td>پشتیبانی</td>
+                            <td>استاندارد (ساعات اداری)</td>
+                            <td>ویژه (۷/۲۴)</td>
+                            <td>VIP با مدیر اختصاصی</td>
+                        </tr>
+                        <tr>
+                            <td>سیستم تخفیف و کوپن</td>
+                            <td>پایه</td>
+                            <td>پیشرفته</td>
+                            <td>پیشرفته + سیستم وفاداری</td>
+                        </tr>
+                        <tr>
+                            <td>مدیریت چند فروشنده</td>
+                            <td class="feature-unavailable">خیر</td>
+                            <td>تا ۵ فروشنده</td>
+                            <td>نامحدود</td>
+                        </tr>
+                        <tr>
+                            <td>اپلیکیشن موبایل</td>
+                            <td class="feature-unavailable">خیر</td>
+                            <td class="feature-unavailable">خیر</td>
+                            <td class="feature-available">بله (اختصاصی)</td>
+                        </tr>
+                        <tr>
+                            <td>اتصال به سیستم‌های حسابداری</td>
+                            <td class="feature-unavailable">خیر</td>
+                            <td class="feature-available">محدود</td>
+                            <td class="feature-available">کامل</td>
+                        </tr>
+                        <tr>
+                            <td>فضای ذخیره‌سازی</td>
+                            <td>۵ گیگابایت</td>
+                            <td>۲۰ گیگابایت</td>
+                            <td>۱۰۰ گیگابایت</td>
+                        </tr>
+                        <tr>
+                            <td>ترافیک ماهانه</td>
+                            <td>۱۰۰ گیگابایت</td>
+                            <td>۵۰۰ گیگابایت</td>
+                            <td>نامحدود</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="plan-cta">
+                    <h3>هنوز تصمیم نگرفته‌اید؟</h3>
+                    <p>می‌توانید با کارشناسان ما مشورت کنید تا بهترین پلن متناسب با نیازهای کسب‌وکار خود را پیدا کنید.</p>
+                    <a href="#" class="btn-white">درخواست مشاوره رایگان</a>
+                </div>
+            </div>
+        </section>
+    
+        <!-- فوتر -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <span>K</span>YREN
+                    </div>
+                    <p>کایرن، پیشرو در ارائه راهکارهای فروشگاه آنلاین برای کسب‌وکارهای ایرانی. با کایرن به راحتی می‌توانید فروشگاه آنلاین خود را راه‌اندازی کنید و فروش خود را افزایش دهید.</p>
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>لینک‌های سریع</h3>
+                    <ul>
+                        <li><a href="#">صفحه اصلی</a></li>
+                        <li><a href="#">پلن‌های اشتراک</a></li>
+                        <li><a href="#">ویژگی‌ها</a></li>
+                        <li><a href="#">وبلاگ</a></li>
+                        <li><a href="#">درباره ما</a></li>
+                        <li><a href="#">تماس با ما</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>خدمات</h3>
+                    <ul>
+                        <li><a href="#">راه‌اندازی فروشگاه آنلاین</a></li>
+                        <li><a href="#">طراحی قالب اختصاصی</a></li>
+                        <li><a href="#">سئو و بهینه‌سازی</a></li>
+                        <li><a href="#">دیجیتال مارکتینگ</a></li>
+                        <li><a href="#">مشاوره کسب‌وکار آنلاین</a></li>
+                        <li><a href="#">آموزش فروش آنلاین</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تماس با ما</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <span>تهران، خیابان ولیعصر، برج کایرن، طبقه ۸، واحد ۳</span></p>
+                    <p><i class="fas fa-phone"></i> <span>۰۲۱-۸۸۷۷۶۶۵۵</span></p>
+                    <p><i class="fas fa-envelope"></i> <span>kyren.ir</span></p>
+                    <p><i class="fas fa-clock"></i> <span>شنبه تا چهارشنبه: ۸ صبح تا ۶ عصر</span></p>
+                    <p><i class="fas fa-clock"></i> <span>پنجشنبه: ۸ صبح تا ۱ بعدازظهر</span></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>تمامی حقوق برای فروشگاه کایرن محفوظ است. &copy; ۱۴۰۴</p>
+            </div>
+        </footer>
+    
+        <!-- اسکریپت‌ها -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+        <script>
+            // منوی موبایل
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                document.querySelector('nav').classList.toggle('active');
+            });
+    
+            // تب‌ها
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const planTitleElement = document.getElementById('plan-hero-title');
+            const currentPlanElement = document.getElementById('current-plan-title');
+    
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // فعال کردن دکمه تب
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+    
+                    // نمایش محتوای تب
+                    const planType = btn.getAttribute('data-plan');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(`${planType}-tab`).classList.add('active');
+    
+                    // به‌روزرسانی عنوان صفحه
+                    if (planType === 'compare') {
+                        planTitleElement.textContent = 'مقایسه پلن‌های اشتراکی کایرن';
+                        currentPlanElement.textContent = 'مقایسه پلن‌ها';
+                    } else if (planType === 'basic') {
+                        planTitleElement.textContent = 'جزئیات پلن پایه کایرن';
+                        currentPlanElement.textContent = 'پلن پایه';
+                    } else if (planType === 'pro') {
+                        planTitleElement.textContent = 'جزئیات پلن حرفه‌ای کایرن';
+                        currentPlanElement.textContent = 'پلن حرفه‌ای';
+                    } else if (planType === 'enterprise') {
+                        planTitleElement.textContent = 'جزئیات پلن سازمانی کایرن';
+                        currentPlanElement.textContent = 'پلن سازمانی';
+                    }
+                });
+            });
+    
+            // سوالات متداول
+            const faqQuestions = document.querySelectorAll('.faq-question');
+    
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+        </script>
+
+    </body>
+    </html>
+    
