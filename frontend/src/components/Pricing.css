@@ -1,0 +1,95 @@
+/* پلن‌های اشتراک */
+.pricing {
+    padding: 50px 0;
+    background-color: var(--white);
+    border-radius: 30px;
+    margin: 0 20px;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.pricing-card {
+    background-color: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    border: 1px solid #e0e0e0;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-header {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.pricing-popular {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.pricing-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pricing-price {
+    font-size: 36px;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pricing-period {
+    color: var(--light-text);
+    font-size: 14px;
+}
+
+.pricing-features {
+    padding: 30px 20px;
+}
+
+.pricing-features ul {
+    list-style: none;
+}
+
+.pricing-features ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+}
+
+.pricing-features ul li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features ul li i {
+    margin-left: 10px;
+    color: var(--accent-color);
+}
+
+.pricing-action {
+    padding: 0 20px 30px;
+    text-align: center;
+}

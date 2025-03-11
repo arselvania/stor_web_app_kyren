@@ -1,21 +1,23 @@
-// src/App.js
-import React from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import React from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Intro from './components/Intro';
+import Pricing from './components/Pricing';
+import Features from './components/Features';
+import Footer from './components/Footer';
 import './App.css';
 
-
 function App() {
-    return (
-        <div>
-            <Header />
-            <main>
-                <h1>خوش آمدید به فروشگاه کایرن!</h1>
-                <p>بهترین محصولات را با تخفیف‌های ویژه بخرید.</p>
-            </main>
-            <Footer />
-        </div>
-    );
+  return (
+    <div className="app" dir="rtl" lang="fa">
+      <Header />
+      <Hero />
+      <Intro />
+      <Pricing />
+      <Features />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

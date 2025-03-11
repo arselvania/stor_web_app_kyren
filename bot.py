@@ -3,6 +3,8 @@ from telebot import types
 from flask import Flask, request, jsonify, send_from_directory
 import os
 from config import *  # مطمئن شو که متغیرهای `TOKEN` و `WEBHOOK_URL` اینجا هستن
+from flask import render_template
+
 
 # تنظیمات Flask
 app = Flask(__name__)
@@ -23,6 +25,12 @@ def webhook():
 @app.route("/")
 def serve_index():
     return send_from_directory(os.getcwd(), "index.html")  # فایل `index.html` در روت اجرا می‌شود.
+
+
+@app.route("/product")
+def product():
+    return render_template("product.html")
+
 
 # 📌 🔥 هندلر `/start` در تلگرام بات
 @bot.message_handler(commands=['start'])
